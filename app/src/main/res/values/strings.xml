@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FieldWork</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="month_01">Janeiro</string>
+    <string name="month_02">Fevereiro</string>
+    <string name="month_03">Março</string>
+    <string name="month_04">Abril</string>
+    <string name="month_05">Maio</string>
+    <string name="month_06">Junho</string>
+    <string name="month_07">Julho</string>
+    <string name="month_08">Agosto</string>
+    <string name="month_09">Setembro</string>
+    <string name="month_10">Outubro</string>
+    <string name="month_11">Novembro</string>
+    <string name="month_12">Dezembro</string>
+    <string name="vazio">VAZIO</string>
+</resources>

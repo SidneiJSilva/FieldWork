@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/app_bar_main"
+        tools:context=".views.MainActivity">
+
+    <TextView
+            android:id="@+id/mainDate"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="Publicações"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/publicacoes"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="Vídeos"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/videos"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="Horas"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/horas"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="Revisitas"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/revisitas"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="Estudos"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/estudos"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/today"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</android.support.v7.widget.LinearLayoutCompat>
