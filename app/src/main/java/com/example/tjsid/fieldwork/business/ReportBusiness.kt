@@ -7,6 +7,6 @@ class ReportBusiness(context: Context) {
 
     private val mReportRepository: ReportRepository = ReportRepository.getInstance(context)
 
-    fun get(date: String) = mReportRepository.get(date)
+    fun get(publicador: String) = mReportRepository.get(publicador)
 
 }

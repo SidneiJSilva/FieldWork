@@ -16,6 +16,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    <TextView
+            android:id="@+id/mainPublicador"
+            android:textAlignment="center"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/dataTest"
+            android:textAlignment="center"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

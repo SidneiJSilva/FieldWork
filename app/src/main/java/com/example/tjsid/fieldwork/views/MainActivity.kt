@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.tjsid.fieldwork.dates.Date
 import com.example.tjsid.fieldwork.R
 import com.example.tjsid.fieldwork.business.ReportBusiness
@@ -16,6 +17,7 @@ import com.example.tjsid.fieldwork.repository.ReportRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.sql.SQLException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -52,8 +54,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mReportRepository = ReportRepository.getInstance(this)
         mReportBusiness = ReportBusiness(this)
 
-        startAll()
 //        mReportRepository.insertDefaultReport()
+        startAll()
 
     }
 
@@ -111,15 +113,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun startAll(){
         mReportBusiness = ReportBusiness(this)
 
-        mReportRepository.insertDefaultReport()
+        mReportRepository.insertDefaultReport2()
 
-        var reportEntity: ReportEntity = mReportBusiness.get("01/01/2001")!!
+        try{
+            var reportEntity: ReportEntity = mReportBusiness.get("Sidnei Silva")!!
+            mainPublicador.text = reportEntity.publicador
+            publicacoes.text = reportEntity.publicacoes.toString()
+            videos.text = reportEntity.videos.toString()
+            horas.text = reportEntity.horas.toString()
+            revisitas.text = reportEntity.revisitas.toString()
+            estudos.text = reportEntity.estudos.toString()
 
-        publicacoes.text = reportEntity.publicacoes.toString()
-        videos.text = reportEntity.videos.toString()
-        horas.text = reportEntity.horas.toString()
-        revisitas.text = reportEntity.revisitas.toString()
-        estudos.text = reportEntity.estudos.toString()
+            var data = reportEntity.dia + "/" + reportEntity.mes + "/" + reportEntity.ano
+            dataTest.text = data
+        }catch (e: SQLException){
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 }

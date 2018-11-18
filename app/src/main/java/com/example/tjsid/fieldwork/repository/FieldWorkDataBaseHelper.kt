@@ -15,7 +15,10 @@ class FieldWorkDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
     private val createTableReport = """
         CREATE TABLE ${DataBaseConstants.REPORT.TABLE_NAME} (
         ${DataBaseConstants.REPORT.COLUMNS.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
-        ${DataBaseConstants.REPORT.COLUMNS.DATA} TEXT,
+        ${DataBaseConstants.REPORT.COLUMNS.DIA} TEXT,
+        ${DataBaseConstants.REPORT.COLUMNS.MES} TEXT,
+        ${DataBaseConstants.REPORT.COLUMNS.ANO} TEXT,
+        ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} TEXT,
         ${DataBaseConstants.REPORT.COLUMNS.PUBLICACOES} INTEGER,
         ${DataBaseConstants.REPORT.COLUMNS.VIDEOS} INTEGER,
         ${DataBaseConstants.REPORT.COLUMNS.HORAS} INTEGER,

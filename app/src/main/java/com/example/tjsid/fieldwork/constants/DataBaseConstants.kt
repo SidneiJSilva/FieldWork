@@ -7,7 +7,10 @@ class DataBaseConstants {
 
         object COLUMNS {
             val ID = "id"
-            val DATA = "data"
+            val PUBLICADOR = "publicador"
+            val DIA = "dia"
+            val MES = "mes"
+            val ANO = "ano"
             val PUBLICACOES = "publicacoes"
             val VIDEOS = "videos"
             val HORAS = "horas"
