@@ -27,8 +27,17 @@ class FieldWorkDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         );
     """
 
+    private val createTableUser = """
+        CREATE TABLE ${DataBaseConstants.USER.TABLE_NAME} (
+        ${DataBaseConstants.USER.COLUMNS.ID} INTEGER PRIMARY KEY AUTOINCREMENT,
+        ${DataBaseConstants.USER.COLUMNS.NOME} TEXT,
+        ${DataBaseConstants.USER.COLUMNS.EMAIL} TEXT
+        );
+    """
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(createTableReport)
+        db.execSQL(createTableUser)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

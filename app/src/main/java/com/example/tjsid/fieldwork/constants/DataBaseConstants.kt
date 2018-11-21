@@ -19,4 +19,14 @@ class DataBaseConstants {
         }
     }
 
+    object USER {
+        val TABLE_NAME = "user"
+
+        object COLUMNS {
+            val ID = "id"
+            val NOME = "nome"
+            val EMAIL = "email"
+        }
+    }
+
 }

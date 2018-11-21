@@ -9,31 +9,27 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
-import com.example.tjsid.fieldwork.dates.Date
 import com.example.tjsid.fieldwork.R
 import com.example.tjsid.fieldwork.business.ReportBusiness
-import com.example.tjsid.fieldwork.constants.ReportConstants
 import com.example.tjsid.fieldwork.entities.ReportEntity
 import com.example.tjsid.fieldwork.repository.ReportRepository
 import com.example.tjsid.fieldwork.util.SecurityPreferences
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import java.sql.SQLException
+import kotlinx.android.synthetic.main.activity_insert.*
+import kotlinx.android.synthetic.main.app_bar_insert.*
+import kotlinx.android.synthetic.main.content_insert.*
+import java.lang.Integer.parseInt
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val date: Date = Date.getInstance(this)
     private lateinit var mReportBusiness: ReportBusiness
     private lateinit var mReportRepository: ReportRepository
     private lateinit var mSecurityPreferences: SecurityPreferences
 
-    private var reportId: Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_insert)
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -51,18 +47,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        //instanciando variáveis
+        //instaciando variáveis
         mReportRepository = ReportRepository.getInstance(this)
         mReportBusiness = ReportBusiness(this)
         mSecurityPreferences = SecurityPreferences(this)
 
-        //show date in mainActivity (Sidnei)
-        showDate()
+        salvar.setOnClickListener{
+            salvar()
+        }
 
-//        mReportRepository.insertDefaultReport()
-
-        //populando tela inicial
-        startAll()
+        botaoConsulta.setOnClickListener{
+            consult()
+        }
 
     }
 
@@ -76,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.insert, menu)
         return true
     }
 
@@ -117,35 +113,40 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun startAll() {
+    private fun salvar(){
+        var reportEntity = ReportEntity(0,insertDia.text.toString(),insertMes.text.toString(),insertAno.text.toString(),insertNome.text.toString(),parseInt(insertPublicacoes.text.toString()),parseInt(insertVideos.text.toString()),parseInt(insertHoras.text.toString()),parseInt(insertRevisitas.text.toString()),parseInt(insertEstudos.text.toString()) )
 
-        try {
-            val reportEntityInsert = ReportEntity(reportId, "20", "11", "2018", "Simone Andrade", 2, 0, 2, 0, 0)
-            mReportBusiness.insert(reportEntityInsert)
+        if(mReportBusiness.getBeforeInsert(reportEntity)){
+            var reportEntity2 = mReportBusiness.getToSum(reportEntity)
 
-            mReportRepository.insertDefaultReport2()
+            reportEntity.publicacoes += reportEntity2.publicacoes
+            reportEntity.videos += reportEntity2.videos
+            reportEntity.horas += reportEntity2.horas
+            reportEntity.revisitas += reportEntity2.revisitas
+            reportEntity.estudos += reportEntity2.estudos
 
-            val nome = mSecurityPreferences.getStoredString(ReportConstants.KEY.USER_NAME)
-
-            var reportEntity: ReportEntity = mReportBusiness.get(nome)!!
-            mainPublicador.text = reportEntity.publicador
-            publicacoes.text = reportEntity.publicacoes.toString()
-            videos.text = reportEntity.videos.toString()
-            horas.text = reportEntity.horas.toString()
-            revisitas.text = reportEntity.revisitas.toString()
-            estudos.text = reportEntity.estudos.toString()
-
-            var data = reportEntity.dia + "/" + reportEntity.mes + "/" + reportEntity.ano
-            dataTest.text = data
-        } catch (e: SQLException) {
-            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            mReportBusiness.update(reportEntity)
+            finish()
+            startActivity(Intent(this, InsertActivity::class.java))
+            Toast.makeText(this, "Relatório somando com sucesso", Toast.LENGTH_SHORT).show()
+        }else{
+            mReportBusiness.insert(reportEntity)
+            finish()
+            startActivity(Intent(this, InsertActivity::class.java))
+            Toast.makeText(this, "Relatório incluído com sucesso", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun showDate() {
-        val mDate: String = date.getMonth(this) + " de " + date.getYear()
-        mainDate.text = mDate
-        today.text = date.today()
-    }
+    private fun consult(){
+        var reportEntity = ReportEntity(0,insertDia.text.toString(),insertMes.text.toString(),insertAno.text.toString(),insertNome.text.toString(),parseInt(insertPublicacoes.text.toString()),parseInt(insertVideos.text.toString()),parseInt(insertHoras.text.toString()),parseInt(insertRevisitas.text.toString()),parseInt(insertEstudos.text.toString()) )
 
+        var report = mReportBusiness.consult(reportEntity)
+
+        if(report.id == 0){
+            Toast.makeText(this, "Dados não encontrados", Toast.LENGTH_LONG).show()
+        }else{
+            var texto = report.dia + "/" + report.mes + "/" + report.ano + " - " + report.publicador + ": " + report.publicacoes + " " + report.videos + " " + report.horas + " " + report.revisitas + " " + report.estudos
+            textoConsulta.text = texto
+        }
+    }
 }

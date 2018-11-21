@@ -19,4 +19,10 @@
     <string name="month_11">Novembro</string>
     <string name="month_12">Dezembro</string>
     <string name="vazio">VAZIO</string>
+    <string name="title_activity_insert">InsertActivity</string>
+    <string name="title_activity_cad_user">CadUserActivity</string>
+    <string name="nome">Nome</string>
+    <string name="e_mail">E-mail</string>
+    <string name="salvar">Salvar</string>
+    <string name="cadastro_de_usuario">Cadastro de usuário</string>
 </resources>

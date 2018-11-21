@@ -10,30 +10,25 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.tjsid.fieldwork.dates.Date
 import com.example.tjsid.fieldwork.R
-import com.example.tjsid.fieldwork.business.ReportBusiness
+
+import com.example.tjsid.fieldwork.business.UserBusiness
 import com.example.tjsid.fieldwork.constants.ReportConstants
-import com.example.tjsid.fieldwork.entities.ReportEntity
-import com.example.tjsid.fieldwork.repository.ReportRepository
+import com.example.tjsid.fieldwork.entities.UserEntity
 import com.example.tjsid.fieldwork.util.SecurityPreferences
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import java.sql.SQLException
+import kotlinx.android.synthetic.main.activity_cad_user.*
+import kotlinx.android.synthetic.main.app_bar_cad_user.*
+import kotlinx.android.synthetic.main.content_cad_user.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val date: Date = Date.getInstance(this)
-    private lateinit var mReportBusiness: ReportBusiness
-    private lateinit var mReportRepository: ReportRepository
-    private lateinit var mSecurityPreferences: SecurityPreferences
+    private lateinit var mUserBusiness: UserBusiness
+    private lateinit var mSecurityPreferences : SecurityPreferences
 
-    private var reportId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_cad_user)
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -52,17 +47,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
 
         //instanciando variáveis
-        mReportRepository = ReportRepository.getInstance(this)
-        mReportBusiness = ReportBusiness(this)
+        mUserBusiness = UserBusiness(this)
         mSecurityPreferences = SecurityPreferences(this)
 
-        //show date in mainActivity (Sidnei)
-        showDate()
-
-//        mReportRepository.insertDefaultReport()
-
-        //populando tela inicial
-        startAll()
+        //clicar no botão salvar
+        btnSave.setOnClickListener() {
+            saveUser()
+        }
 
     }
 
@@ -76,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.cad_user, menu)
         return true
     }
 
@@ -117,35 +108,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun startAll() {
+    private fun saveUser(){
+        try{
+            var nome = nameUser.text.toString()
+            var email = mailUser.text.toString()
+            var userEntity = UserEntity(0, nome, email)
 
-        try {
-            val reportEntityInsert = ReportEntity(reportId, "20", "11", "2018", "Simone Andrade", 2, 0, 2, 0, 0)
-            mReportBusiness.insert(reportEntityInsert)
+            if(mUserBusiness.get(userEntity)){
+                Toast.makeText(this, "E-mail já cadastrado", Toast.LENGTH_LONG).show()
+            }else{
+                mUserBusiness.insert(userEntity)
+                Toast.makeText(this, "Usuário inserido com sucesso!", Toast.LENGTH_LONG).show()
 
-            mReportRepository.insertDefaultReport2()
+                mSecurityPreferences.storeString(ReportConstants.KEY.USER_NAME, nome)
+                mSecurityPreferences.storeString(ReportConstants.KEY.USER_EMAIL, email)
 
-            val nome = mSecurityPreferences.getStoredString(ReportConstants.KEY.USER_NAME)
-
-            var reportEntity: ReportEntity = mReportBusiness.get(nome)!!
-            mainPublicador.text = reportEntity.publicador
-            publicacoes.text = reportEntity.publicacoes.toString()
-            videos.text = reportEntity.videos.toString()
-            horas.text = reportEntity.horas.toString()
-            revisitas.text = reportEntity.revisitas.toString()
-            estudos.text = reportEntity.estudos.toString()
-
-            var data = reportEntity.dia + "/" + reportEntity.mes + "/" + reportEntity.ano
-            dataTest.text = data
-        } catch (e: SQLException) {
-            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }catch (e: Exception){
+            Toast.makeText(this, "Erro: " + e.message, Toast.LENGTH_LONG).show()
         }
     }
-
-    private fun showDate() {
-        val mDate: String = date.getMonth(this) + " de " + date.getYear()
-        mainDate.text = mDate
-        today.text = date.today()
-    }
-
 }

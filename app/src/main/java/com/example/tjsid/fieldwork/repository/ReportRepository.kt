@@ -3,6 +3,8 @@ package com.example.tjsid.fieldwork.repository
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.widget.Toast
 import com.example.tjsid.fieldwork.constants.DataBaseConstants
 import com.example.tjsid.fieldwork.entities.ReportEntity
 import java.lang.Exception
@@ -72,11 +74,69 @@ class ReportRepository private constructor(context: Context){
 
     }
 
+    fun getToSum(report: ReportEntity): ReportEntity{
+        var reportEntity: ReportEntity? = null
+
+        try{
+
+            val cursor: Cursor
+            val db = mFieldWorkDataBaseHelper.readableDatabase
+            cursor = db.rawQuery("SELECT * FROM report WHERE ${DataBaseConstants.REPORT.COLUMNS.DIA} = ${report.dia} " +
+                    "AND ${DataBaseConstants.REPORT.COLUMNS.MES} = ${report.mes} " +
+                    "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = ${report.ano};", null)
+
+            cursor.moveToFirst()
+            val reportId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ID))
+            val reportDia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+            val reportMes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+            val reportAno= cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+            val reportPublicador = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+            val reportPublicacoes = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES))
+            val reportVideos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.VIDEOS))
+            val reportHoras = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.HORAS))
+            val reportRevisitas = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.REVISITAS))
+            val reportEstudos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ESTUDOS))
+
+            reportEntity = ReportEntity(reportId, reportDia, reportMes, reportAno, reportPublicador, reportPublicacoes, reportVideos, reportHoras, reportRevisitas, reportEstudos)
+
+            return reportEntity
+
+        }catch (e: Exception){
+            throw e
+        }
+
+    }
+
+//    private fun getStartScreen(): ReportEntity{
+//        var reportEntity: ReportEntity? = null
+//
+//        try{
+//            var cursor: Cursor
+//            val db = mFieldWorkDataBaseHelper.readableDatabase
+//            cursor = db.rawQuery()
+//
+//
+//        }catch (e: Exception){
+//            throw e
+//        }
+//    }
+
+    fun getBeforeInsert(report: ReportEntity): Boolean{
+
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+
+        cursor = db.rawQuery("SELECT * FROM report WHERE ${DataBaseConstants.REPORT.COLUMNS.DIA} = ${report.dia} " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.MES} = ${report.mes} " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = ${report.ano};", null)
+
+        return cursor.count > 0
+    }
+
     fun insert(report: ReportEntity){
 
         try{
             val db = mFieldWorkDataBaseHelper.writableDatabase
-
             val insertValues = ContentValues()
             insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, report.dia)
             insertValues.put(DataBaseConstants.REPORT.COLUMNS.MES, report.mes)
@@ -94,6 +154,61 @@ class ReportRepository private constructor(context: Context){
             throw e
         }
 
+    }
+
+    fun update(reportEntity: ReportEntity){
+        try{
+            val db = mFieldWorkDataBaseHelper.writableDatabase
+
+            val sql = "UPDATE ${DataBaseConstants.REPORT.TABLE_NAME} SET " +
+                    "${DataBaseConstants.REPORT.COLUMNS.PUBLICACOES} = ${reportEntity.publicacoes}, " +
+                    "${DataBaseConstants.REPORT.COLUMNS.VIDEOS} = ${reportEntity.videos}," +
+                    "${DataBaseConstants.REPORT.COLUMNS.HORAS} = ${reportEntity.horas}, " +
+                    "${DataBaseConstants.REPORT.COLUMNS.REVISITAS} = ${reportEntity.revisitas}," +
+                    "${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} = ${reportEntity.estudos} " +
+                    "WHERE ${DataBaseConstants.REPORT.COLUMNS.DIA} = ${reportEntity.dia} AND " +
+                    "${DataBaseConstants.REPORT.COLUMNS.MES} = ${reportEntity.mes} AND " +
+                    "${DataBaseConstants.REPORT.COLUMNS.ANO} = ${reportEntity.ano};"
+
+            db.execSQL(sql)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    fun consult(reportEntity: ReportEntity): ReportEntity{
+
+        try{
+            val db = mFieldWorkDataBaseHelper.readableDatabase
+            val cursor: Cursor
+            var report = ReportEntity(0, "-", "-", "-", "-", 0, 0, 0, 0, 0)
+
+            cursor = db.rawQuery("SELECT * FROM report WHERE DIA = ${reportEntity.dia} AND MES = ${reportEntity.mes} AND ANO = ${reportEntity.ano}",null)
+
+            if (cursor.count > 0){
+                cursor.moveToFirst()
+
+                val reportId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ID))
+                val reportDia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                val reportMes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                val reportAno= cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                val reportPublicador = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                val reportPublicacoes = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES))
+                val reportVideos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.VIDEOS))
+                val reportHoras = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.HORAS))
+                val reportRevisitas = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.REVISITAS))
+                val reportEstudos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ESTUDOS))
+
+                report = ReportEntity(reportId, reportDia, reportMes, reportAno, reportPublicador, reportPublicacoes, reportVideos, reportHoras, reportRevisitas, reportEstudos)
+
+                return report
+            }else{
+                return report
+            }
+
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     fun insertDefaultReport(){
