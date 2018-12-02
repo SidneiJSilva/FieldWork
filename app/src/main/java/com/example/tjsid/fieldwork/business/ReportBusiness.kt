@@ -8,7 +8,15 @@ class ReportBusiness(context: Context) {
 
     private val mReportRepository: ReportRepository = ReportRepository.getInstance(context)
 
-    fun get(publicador: String) = mReportRepository.get(publicador)
+    fun get(publicador: String): ReportEntity {
+        val report: ReportEntity? = mReportRepository.get(publicador)
+        if(report != null){
+            return report
+        }else{
+            var reportNull: ReportEntity = ReportEntity(0,"nulo","","","",0,0,0,0,0, "")
+            return reportNull
+        }
+    }
 
     fun insert(reportEntity: ReportEntity) = mReportRepository.insert(reportEntity)
 
@@ -19,5 +27,7 @@ class ReportBusiness(context: Context) {
     fun update(reportEntity: ReportEntity) = mReportRepository.update(reportEntity)
 
     fun consult(reportEntity: ReportEntity) = mReportRepository.consult(reportEntity)
+
+    fun mainConsult(name: String) = mReportRepository.mainConsult(name)
 
 }

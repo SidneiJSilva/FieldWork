@@ -16,19 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <TextView
-            android:id="@+id/mainPublicador"
-            android:textAlignment="center"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorWhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    <TextView
-            android:id="@+id/dataTest"
-            android:textAlignment="center"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorWhite"
+    <Spinner
+            android:id="@+id/spinnerMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -132,11 +121,5 @@
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-    <TextView
-            android:id="@+id/today"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
 </android.support.v7.widget.LinearLayoutCompat>

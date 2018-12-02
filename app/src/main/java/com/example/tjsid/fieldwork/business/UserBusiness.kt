@@ -12,4 +12,8 @@ class UserBusiness(context: Context) {
 
     fun insert(userEntity: UserEntity) = mUserRepository.insert(userEntity)
 
+    fun getToVerify() = mUserRepository.getToVerify()
+
+    fun getUserList() = mUserRepository.getUserList()
+
 }

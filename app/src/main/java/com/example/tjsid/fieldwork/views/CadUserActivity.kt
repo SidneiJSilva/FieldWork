@@ -23,18 +23,13 @@ import kotlinx.android.synthetic.main.content_cad_user.*
 class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var mUserBusiness: UserBusiness
-    private lateinit var mSecurityPreferences : SecurityPreferences
+    private lateinit var mSecurityPreferences: SecurityPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cad_user)
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
@@ -54,6 +49,9 @@ class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         btnSave.setOnClickListener() {
             saveUser()
         }
+
+        //verificando se existem usuários cadastrados no banco
+        verifiyUser()
 
     }
 
@@ -84,14 +82,16 @@ class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.telaInicial-> {
                 startActivity(Intent(this, MainActivity::class.java))
             }
-            R.id.nav_gallery -> {
+            R.id.incluirRelatorio -> {
                 startActivity(Intent(this, InsertActivity::class.java))
             }
-            R.id.nav_slideshow -> {
-                startActivity(Intent(this, CadUserActivity::class.java))
+            R.id.incluirUsuario -> {
+                var intent = Intent(this, CadUserActivity::class.java)
+                intent.putExtra("ref", 1)
+                startActivity(intent)
             }
             R.id.nav_manage -> {
 
@@ -108,25 +108,39 @@ class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         return true
     }
 
-    private fun saveUser(){
-        try{
+    private fun saveUser() {
+        try {
             var nome = nameUser.text.toString()
             var email = mailUser.text.toString()
             var userEntity = UserEntity(0, nome, email)
 
-            if(mUserBusiness.get(userEntity)){
+            if (mUserBusiness.get(userEntity)) {
                 Toast.makeText(this, "E-mail já cadastrado", Toast.LENGTH_LONG).show()
-            }else{
+            } else {
                 mUserBusiness.insert(userEntity)
                 Toast.makeText(this, "Usuário inserido com sucesso!", Toast.LENGTH_LONG).show()
 
                 mSecurityPreferences.storeString(ReportConstants.KEY.USER_NAME, nome)
                 mSecurityPreferences.storeString(ReportConstants.KEY.USER_EMAIL, email)
-
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Toast.makeText(this, "Erro: " + e.message, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun verifiyUser() {
+
+        var ref = 0
+
+        ref = intent.getIntExtra("ref", 0)
+
+        if (ref == 0) {
+            if (mUserBusiness.getToVerify()) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
         }
     }
 }

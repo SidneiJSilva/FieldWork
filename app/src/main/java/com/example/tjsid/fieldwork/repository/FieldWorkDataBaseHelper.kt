@@ -23,7 +23,8 @@ class FieldWorkDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         ${DataBaseConstants.REPORT.COLUMNS.VIDEOS} INTEGER,
         ${DataBaseConstants.REPORT.COLUMNS.HORAS} INTEGER,
         ${DataBaseConstants.REPORT.COLUMNS.REVISITAS} INTEGER,
-        ${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} INTEGER
+        ${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} INTEGER,
+        ${DataBaseConstants.REPORT.COLUMNS.NOTAS} TEXT
         );
     """
 

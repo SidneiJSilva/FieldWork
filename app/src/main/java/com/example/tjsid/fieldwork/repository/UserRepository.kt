@@ -7,6 +7,7 @@ import com.example.tjsid.fieldwork.constants.DataBaseConstants
 import com.example.tjsid.fieldwork.entities.ReportEntity
 import com.example.tjsid.fieldwork.entities.UserEntity
 import java.lang.Exception
+import java.sql.SQLException
 
 class UserRepository private constructor(context: Context) {
 
@@ -60,6 +61,44 @@ class UserRepository private constructor(context: Context) {
                 return cursor.count > 0
             }
         } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getToVerify(): Boolean {
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+
+        try {
+
+            cursor = db.rawQuery("SELECT * FROM ${DataBaseConstants.USER.TABLE_NAME}", null)
+
+            return cursor.count > 0
+
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getUserList(): List<String>{
+
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+        var userList = mutableListOf<String>()
+        val sql = "SELECT ${DataBaseConstants.USER.COLUMNS.NOME} FROM ${DataBaseConstants.USER.TABLE_NAME}"
+
+        try{
+            cursor = db.rawQuery(sql, null)
+
+            if(cursor.count > 0){
+                cursor.moveToFirst()
+                userList.add(cursor.getString(cursor.getColumnIndex(DataBaseConstants.USER.COLUMNS.NOME)))
+                while(cursor.moveToNext()){
+                    userList.add(cursor.getString(cursor.getColumnIndex(DataBaseConstants.USER.COLUMNS.NOME)))
+                }
+            }
+            return userList
+        }catch (e: Exception){
             throw e
         }
     }

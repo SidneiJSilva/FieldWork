@@ -9,4 +9,5 @@ data class ReportEntity (val id: Int,
                          var videos: Int,
                          var horas: Int,
                          var revisitas: Int,
-                         var estudos: Int)
+                         var estudos: Int,
+                         var notas: String)

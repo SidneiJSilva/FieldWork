@@ -16,6 +16,7 @@ class DataBaseConstants {
             val HORAS = "horas"
             val REVISITAS = "revisitas"
             val ESTUDOS = "estudos"
+            val NOTAS = "notas"
         }
     }
 

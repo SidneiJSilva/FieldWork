@@ -10,70 +10,177 @@
         tools:showIn="@layout/app_bar_insert"
         tools:context=".views.InsertActivity">
 
-    <EditText
-            android:id="@+id/insertNome"
-            android:hint="Nome"
-            android:inputType="text"
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="@string/data"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/insertData"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:id="@+id/btnDate"
+                android:text="@string/selecionar_data"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/insertDia"
-                android:hint="Dia"
-                android:inputType="number"
+                android:id="@+id/insertHour"
+                android:hint="00"
+                android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
-        <EditText
-                android:id="@+id/insertMes"
-                android:hint="Mes"
-                android:inputType="number"
+
+        <TextView
+                android:text="@string/horas"
+                android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
+
         <EditText
-                android:id="@+id/insertAno"
-                android:hint="Ano"
-                android:inputType="number"
+                android:id="@+id/insertMinute"
+                android:hint="00"
+                android:textAlignment="center"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="@string/minutos"
+                android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
-    <EditText
-            android:id="@+id/insertPublicacoes"
-            android:hint="Publicações"
-            android:inputType="number"
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageButton
+                android:id="@+id/btnPubMais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/viewPub"
+                android:text="@string/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageButton
+                android:id="@+id/btnPubMenos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="@string/publicacoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageButton
+                android:id="@+id/btnVidMais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/viewVid"
+                android:text="@string/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageButton
+                android:id="@+id/btnVidMenos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="@string/videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageButton
+                android:id="@+id/btnRevMais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/viewRev"
+                android:text="@string/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageButton
+                android:id="@+id/btnRevMenos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="@string/revisitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <Spinner
+            android:id="@+id/nameSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    <EditText
-            android:id="@+id/insertVideos"
-            android:hint="Videos"
-            android:inputType="number"
+
+    <TextView
+            android:text="Notas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    <EditText
-            android:id="@+id/insertHoras"
-            android:hint="Horas"
-            android:inputType="number"
+
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    <EditText
-            android:id="@+id/insertRevisitas"
-            android:hint="Revisitas"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    <EditText
-            android:id="@+id/insertEstudos"
-            android:hint="Estudos"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="50pt">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:hint="Digite aqui"
+                android:ems="10"
+                android:id="@+id/notas"/>
+
+    </ScrollView>
+
     <Button
             android:id="@+id/salvar"
             android:text="salvar"
@@ -81,13 +188,9 @@
             android:layout_height="wrap_content"/>
 
     <TextView
-            android:id="@+id/textoConsulta"
+            android:id="@+id/bdTestes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    <Button
-            android:id="@+id/botaoConsulta"
-            android:text="Consultar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
