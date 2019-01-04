@@ -33,4 +33,28 @@
     <string name="publicacoes">Publicações</string>
     <string name="videos">Vídeos</string>
     <string name="revisitas">Revisitas</string>
+    <string name="title_activity_consult">ConsultActivity</string>
+    <string name="selecionar_usuario">Selecionar Usuário</string>
+    <string name="consultar">consultar</string>
+    <string name="notas">Notas</string>
+    <string name="title_activity_consulta_notas">ConsultaNotasActivity</string>
+
+    <string-array name="meses">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
+    <string name="title_activity_estudos">EstudosActivity</string>
+    <string name="estudos_mes">Estudos dirigidos durante o mês de</string>
+    <string name="publicador">Publicador</string>
+
 </resources>

@@ -13,7 +13,6 @@
                 android:name=".views.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity
                 android:name=".views.InsertActivity"
@@ -29,6 +28,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+                android:name=".views.ConsultActivity"
+                android:label="@string/title_activity_consult"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".views.ConsultaNotasActivity"
+                android:label="@string/title_activity_consulta_notas"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".views.EstudosActivity"
+                android:label="@string/title_activity_estudos"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

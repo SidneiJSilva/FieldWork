@@ -4,8 +4,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.provider.ContactsContract
 import android.widget.Toast
 import com.example.tjsid.fieldwork.constants.DataBaseConstants
+import com.example.tjsid.fieldwork.entities.NoteEntity
 import com.example.tjsid.fieldwork.entities.ReportEntity
 import java.lang.Exception
 
@@ -149,20 +151,6 @@ class ReportRepository private constructor(context: Context) {
 
     }
 
-//    private fun getStartScreen(): ReportEntity{
-//        var reportEntity: ReportEntity? = null
-//
-//        try{
-//            var cursor: Cursor
-//            val db = mFieldWorkDataBaseHelper.readableDatabase
-//            cursor = db.rawQuery()
-//
-//
-//        }catch (e: Exception){
-//            throw e
-//        }
-//    }
-
     fun getBeforeInsert(report: ReportEntity): Boolean {
 
         val cursor: Cursor
@@ -178,29 +166,7 @@ class ReportRepository private constructor(context: Context) {
         return cursor.count > 0
     }
 
-    fun insert(report: ReportEntity) {
 
-        try {
-            val db = mFieldWorkDataBaseHelper.writableDatabase
-            val insertValues = ContentValues()
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, report.dia)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.MES, report.mes)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ANO, report.ano)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR, report.publicador)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES, report.publicacoes)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.VIDEOS, report.videos)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.HORAS, report.horas)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.REVISITAS, report.revisitas)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ESTUDOS, 0)
-            insertValues.put(DataBaseConstants.REPORT.COLUMNS.NOTAS, report.notas)
-
-            db.insert(DataBaseConstants.REPORT.TABLE_NAME, null, insertValues)
-
-        } catch (e: Exception) {
-            throw e
-        }
-
-    }
 
     fun update(reportEntity: ReportEntity) {
         try {
@@ -229,10 +195,10 @@ class ReportRepository private constructor(context: Context) {
         try {
             val db = mFieldWorkDataBaseHelper.readableDatabase
             val cursor: Cursor
-            var report = ReportEntity(0, "-", "-", "-", "-", 0, 0, 0, 0, 0, "")
+            var report = ReportEntity(0, "nulo", "-", "-", "-", 0, 0, 0, 0, 0, "")
 
             cursor = db.rawQuery(
-                "SELECT * FROM report WHERE DIA = ${reportEntity.dia} AND MES = ${reportEntity.mes} AND ANO = ${reportEntity.ano}",
+                "SELECT * FROM report WHERE DIA = ${reportEntity.dia} AND MES = ${reportEntity.mes} AND ANO = ${reportEntity.ano} AND PUBLICADOR = '${reportEntity.publicador}'",
                 null
             )
 
@@ -331,7 +297,7 @@ class ReportRepository private constructor(context: Context) {
     fun insertDefaultReport() {
         val db = mFieldWorkDataBaseHelper.writableDatabase
         val insertValues = ContentValues()
-        insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, "2")
+        insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, "1")
         insertValues.put(DataBaseConstants.REPORT.COLUMNS.MES, "12")
         insertValues.put(DataBaseConstants.REPORT.COLUMNS.ANO, "2018")
         insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES, 7)
@@ -364,4 +330,263 @@ class ReportRepository private constructor(context: Context) {
         db.insert(DataBaseConstants.REPORT.TABLE_NAME, null, insertValues)
     }
 
+    fun delete(report: ReportEntity) {
+        val db = mFieldWorkDataBaseHelper.writableDatabase
+
+        try {
+            db.execSQL(
+                "DELETE FROM ${DataBaseConstants.REPORT.TABLE_NAME} " +
+                        "WHERE ${DataBaseConstants.REPORT.COLUMNS.DIA} = ${report.dia} " +
+                        "and ${DataBaseConstants.REPORT.COLUMNS.MES} = ${report.mes} " +
+                        "and ${DataBaseConstants.REPORT.COLUMNS.ANO} = ${report.ano} " +
+                        "and ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '${report.publicador}'"
+            )
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getNotes(name: String, mes: Int): List<NoteEntity> {
+
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+        var noteList = mutableListOf<NoteEntity>()
+        val sql = "SELECT ${DataBaseConstants.REPORT.COLUMNS.DIA}," +
+                "${DataBaseConstants.REPORT.COLUMNS.MES}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.NOTAS} " +
+                "FROM ${DataBaseConstants.REPORT.TABLE_NAME} " +
+                "WHERE ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$name' " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes'" +
+                "ORDER BY ${DataBaseConstants.REPORT.COLUMNS.DIA}"
+
+        try {
+            cursor = db.rawQuery(sql, null)
+
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+
+                    val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                    val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                    val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                    val publicador =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                    val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                    noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                }
+                while (cursor.moveToNext()) {
+                    if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+                        val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                        val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                        val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                        val publicador =
+                            cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                        val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                        noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                    }
+                }
+            }
+            return noteList
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getNotes(name: String, dia: String, mes: String, ano: String): List<NoteEntity> {
+
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+        var noteList = mutableListOf<NoteEntity>()
+        val sql = "SELECT ${DataBaseConstants.REPORT.COLUMNS.DIA}," +
+                "${DataBaseConstants.REPORT.COLUMNS.MES}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.NOTAS} " +
+                "FROM ${DataBaseConstants.REPORT.TABLE_NAME} " +
+                "WHERE ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$name' " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.DIA} = '$dia' " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes' " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano' " +
+                "ORDER BY ${DataBaseConstants.REPORT.COLUMNS.DIA}"
+
+        try {
+            cursor = db.rawQuery(sql, null)
+
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+
+                    val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                    val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                    val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                    val publicador =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                    val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                    noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                }
+                while (cursor.moveToNext()) {
+                    if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+                        val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                        val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                        val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                        val publicador =
+                            cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                        val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                        noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                    }
+                }
+            }
+            return noteList
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getNotes(name: String, ano: String): List<NoteEntity> {
+
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+        var noteList = mutableListOf<NoteEntity>()
+        val sql = "SELECT ${DataBaseConstants.REPORT.COLUMNS.DIA}," +
+                "${DataBaseConstants.REPORT.COLUMNS.MES}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR}, " +
+                "${DataBaseConstants.REPORT.COLUMNS.NOTAS} " +
+                "FROM ${DataBaseConstants.REPORT.TABLE_NAME} " +
+                "WHERE ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$name' " +
+                "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano' " +
+                "ORDER BY ${DataBaseConstants.REPORT.COLUMNS.MES}, ${DataBaseConstants.REPORT.COLUMNS.DIA}"
+
+        try {
+            cursor = db.rawQuery(sql, null)
+
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+
+                    val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                    val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                    val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                    val publicador =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                    val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                    noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                }
+                while (cursor.moveToNext()) {
+                    if (cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS)) != "") {
+                        val dia = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.DIA))
+                        val mes = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.MES))
+                        val ano = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ANO))
+                        val publicador =
+                            cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR))
+                        val notas = cursor.getString(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.NOTAS))
+                        noteList.add(NoteEntity(dia, mes, ano, publicador, notas))
+                    }
+                }
+            }
+            return noteList
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getEstudo(mes: String, ano: String, nome: String): Boolean {
+        val cursor: Cursor
+        val db = mFieldWorkDataBaseHelper.readableDatabase
+//        val sql = "SELECT SUM(${DataBaseConstants.REPORT.COLUMNS.ESTUDOS}) AS " +
+//                "${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} FROM " +
+//                "${DataBaseConstants.REPORT.TABLE_NAME} WHERE " +
+//                "${DataBaseConstants.REPORT.COLUMNS.MES} = $mes AND " +
+//                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$nome';"
+
+        val sql = "SELECT * FROM " +
+                "${DataBaseConstants.REPORT.TABLE_NAME} WHERE " +
+                "${DataBaseConstants.REPORT.COLUMNS.DIA} = '1' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$nome';"
+        try {
+            cursor = db.rawQuery(sql, null)
+
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                val estudos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ESTUDOS))
+                cursor.close()
+                return estudos > 0
+            } else {
+                return false
+            }
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun updateEstudo(mes: String, ano: String, nome: String, estudo: Int) {
+
+        val db = mFieldWorkDataBaseHelper.writableDatabase
+
+        val sql = "UPDATE ${DataBaseConstants.REPORT.TABLE_NAME} SET " +
+                "${DataBaseConstants.REPORT.COLUMNS.DIA} = '1', " +
+                "${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes', " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano', " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$nome', " +
+                "${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} = $estudo WHERE " +
+                "${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$nome' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.DIA} = '1' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes' AND " +
+                "${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano';"
+
+        try {
+            db.execSQL(sql)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun insertEstudo(mes: String, ano: String, nome: String, estudo: Int) {
+
+        try {
+            val db = mFieldWorkDataBaseHelper.writableDatabase
+            val insertValues = ContentValues()
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, "1")
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.MES, mes)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ANO, ano)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR, nome)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES, 0)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.VIDEOS, 0)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.HORAS, 0)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.REVISITAS, 0)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ESTUDOS, estudo)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.NOTAS, "")
+            db.insert(DataBaseConstants.REPORT.TABLE_NAME, null, insertValues)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun insert(report: ReportEntity) {
+
+        try {
+            val db = mFieldWorkDataBaseHelper.writableDatabase
+            val insertValues = ContentValues()
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.DIA, report.dia)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.MES, report.mes)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ANO, report.ano)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICADOR, report.publicador)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES, report.publicacoes)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.VIDEOS, report.videos)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.HORAS, report.horas)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.REVISITAS, report.revisitas)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.ESTUDOS, 0)
+            insertValues.put(DataBaseConstants.REPORT.COLUMNS.NOTAS, report.notas)
+
+            db.insert(DataBaseConstants.REPORT.TABLE_NAME, null, insertValues)
+
+        } catch (e: Exception) {
+            throw e
+        }
+
+    }
 }

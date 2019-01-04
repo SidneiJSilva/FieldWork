@@ -66,9 +66,18 @@ class Date private constructor(context: Context) {
         }
     }
 
+    fun getNumberMonth(): Int {
+
+        var month: Calendar = GregorianCalendar()
+
+        return month.get(Calendar.MONTH)+1
+    }
+
     fun getYear(): String {
         var year: Calendar = GregorianCalendar()
         return year.get(Calendar.YEAR).toString()
     }
+
+
 
 }

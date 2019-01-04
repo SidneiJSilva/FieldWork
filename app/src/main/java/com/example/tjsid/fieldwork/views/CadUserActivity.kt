@@ -93,14 +93,14 @@ class CadUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 intent.putExtra("ref", 1)
                 startActivity(intent)
             }
-            R.id.nav_manage -> {
-
+            R.id.consultaRelatorio -> {
+                startActivity(Intent(this, ConsultActivity::class.java))
             }
-            R.id.nav_share -> {
-
+            R.id.consultaNotas -> {
+                startActivity(Intent(this, ConsultaNotasActivity::class.java))
             }
-            R.id.nav_send -> {
-
+            R.id.incluirEstudo -> {
+                startActivity(Intent(this, EstudosActivity::class.java))
             }
         }
 

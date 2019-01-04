@@ -2,7 +2,6 @@ package com.example.tjsid.fieldwork.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -17,7 +16,6 @@ import com.example.tjsid.fieldwork.dates.Date
 import com.example.tjsid.fieldwork.R
 import com.example.tjsid.fieldwork.business.ReportBusiness
 import com.example.tjsid.fieldwork.business.UserBusiness
-import com.example.tjsid.fieldwork.constants.ReportConstants
 import com.example.tjsid.fieldwork.entities.ReportEntity
 import com.example.tjsid.fieldwork.repository.ReportRepository
 import com.example.tjsid.fieldwork.util.SecurityPreferences
@@ -29,7 +27,6 @@ import java.sql.SQLException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,
     AdapterView.OnItemSelectedListener {
-
 
     private val date: Date = Date.getInstance(this)
     private lateinit var mReportBusiness: ReportBusiness
@@ -43,9 +40,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-//            fazendo um snack bar
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
+            //            fazendo um snack bar
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            //    .setAction("Action", null).show()
             startActivity(Intent(this, InsertActivity::class.java))
         }
 
@@ -65,6 +62,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mSecurityPreferences = SecurityPreferences(this)
         mUserBusiness = UserBusiness(this)
 
+        //mReportRepository.insertDefaultReport()
+
         //show date in mainActivity (Sidnei)
         showDate()
 
@@ -79,6 +78,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setListeners()
 
+    }
+
+    override fun onResume() {
+        val nome = spinnerMain.selectedItem.toString()
+        startAll(nome)
+        super.onResume()
     }
 
     override fun onClick(v: View) {
@@ -121,7 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.telaInicial-> {
+            R.id.telaInicial -> {
                 startActivity(Intent(this, MainActivity::class.java))
             }
             R.id.incluirRelatorio -> {
@@ -132,14 +137,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 intent.putExtra("ref", 1)
                 startActivity(intent)
             }
-            R.id.nav_manage -> {
-
+            R.id.consultaRelatorio -> {
+                startActivity(Intent(this, ConsultActivity::class.java))
             }
-            R.id.nav_share -> {
-
+            R.id.consultaNotas -> {
+                startActivity(Intent(this, ConsultaNotasActivity::class.java))
             }
-            R.id.nav_send -> {
-
+            R.id.incluirEstudo -> {
+                startActivity(Intent(this, EstudosActivity::class.java))
             }
         }
 
@@ -154,7 +159,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             publicacoes.text = reportEntity.publicacoes.toString()
             videos.text = reportEntity.videos.toString()
-            horas.text = reportEntity.horas.toString()
+
+            var hour: String
+
+            hour = if (reportEntity.horas % 60 == 0) {
+                (reportEntity.horas / 60).toString() + ":00"
+            } else {
+                (reportEntity.horas / 60).toString() + ":" + (reportEntity.horas % 60)
+            }
+
+            horas.text = hour
             revisitas.text = reportEntity.revisitas.toString()
             estudos.text = reportEntity.estudos.toString()
 

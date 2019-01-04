@@ -12,26 +12,28 @@
                 android:id="@+id/incluirRelatorio"
                 android:icon="@drawable/report"
                 android:title="Incluir Relatório"/>
+
         <item
-                android:id="@+id/incluirUsuario"
-                android:icon="@drawable/add_user"
-                android:title="Incluir Usuário"/>
+                android:id="@+id/consultaRelatorio"
+                android:icon="@drawable/search"
+                android:title="Consultar Relatório"/>
         <item
-                android:id="@+id/nav_manage"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Tools"/>
+                android:id="@+id/consultaNotas"
+                android:icon="@drawable/notas"
+                android:title="Consultar Notas"/>
+        <item
+                android:id="@+id/incluirEstudo"
+                android:icon="@drawable/literature"
+                android:title="Estudos"/>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Ferramentas">
         <menu>
             <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="Share"/>
-            <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="Send"/>
+                    android:id="@+id/incluirUsuario"
+                    android:icon="@drawable/add_user"
+                    android:title="Incluir Usuário"/>
+
         </menu>
     </item>
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "939901936452",
+    "firebase_url": "https://fieldwork-firebase.firebaseio.com",
+    "project_id": "fieldwork-firebase",
+    "storage_bucket": "fieldwork-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939901936452:android:85aedc3dfec45ec9",
+        "android_client_info": {
+          "package_name": "com.example.tjsid.fieldwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939901936452-48nfarm70ed8khbggncdg3sp5m27bste.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtMbH3BqmN4C2bKI0OWyT6kRo9mKCpn7M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

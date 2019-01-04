@@ -30,4 +30,18 @@ class ReportBusiness(context: Context) {
 
     fun mainConsult(name: String) = mReportRepository.mainConsult(name)
 
+    fun delete(reportEntity: ReportEntity) = mReportRepository.delete(reportEntity)
+
+    fun getNotes(nome: String, mes: Int) = mReportRepository.getNotes(nome, mes)
+
+    fun getNotes(nome: String, dia: String, mes: String, ano: String) = mReportRepository.getNotes(nome, dia, mes, ano)
+
+    fun getNotes(nome: String, ano: String) = mReportRepository.getNotes(nome, ano)
+
+    fun getEstudos(mes: String, ano: String, nome: String) = mReportRepository.getEstudo(mes, ano, nome)
+
+    fun insertEstudo(mes: String, ano: String, nome: String, estudo: Int) = mReportRepository.insertEstudo(mes, ano, nome, estudo)
+
+    fun updateEstudo(mes: String, ano: String, nome: String, estudo: Int) = mReportRepository.updateEstudo(mes, ano, nome, estudo)
+
 }

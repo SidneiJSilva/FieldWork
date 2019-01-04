@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/app_bar_estudos"
+        android:background="@drawable/background_texture"
+        tools:context=".views.EstudosActivity">
+
+    <LinearLayout
+            android:layout_marginTop="15pt"
+            android:orientation="horizontal"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:textAlignment="center"
+                android:text="@string/estudos_mes"
+                android:layout_width="0pt"
+                android:background="@drawable/main_esquerda"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <Spinner
+                android:id="@+id/spinnerMes"
+                android:entries="@array/meses"
+                android:layout_marginRight="5dp"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:background="@drawable/main_direita"
+                android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:textAlignment="center"
+                android:text="                                             @string/publicador"
+                android:background="@drawable/main_esquerda"
+                android:layout_marginLeft="5dp"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <Spinner
+                android:id="@+id/spinnerPublicador"
+                android:background="@drawable/main_direita"
+                android:layout_marginLeft="5dp"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <EditText
+            android:id="@+id/txtEstudo"
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:text="@string/salvar"
+            android:id="@+id/btnEstudo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

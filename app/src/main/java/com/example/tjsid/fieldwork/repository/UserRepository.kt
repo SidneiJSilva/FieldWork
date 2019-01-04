@@ -80,7 +80,7 @@ class UserRepository private constructor(context: Context) {
         }
     }
 
-    fun getUserList(): List<String>{
+    fun getUserList(): List<String> {
 
         val cursor: Cursor
         val db = mFieldWorkDataBaseHelper.readableDatabase

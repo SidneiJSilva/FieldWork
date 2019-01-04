@@ -8,57 +8,82 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_insert"
+        android:background="@drawable/background_texture"
         tools:context=".views.InsertActivity">
 
     <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <TextView
                 android:text="@string/data"
+                android:textAlignment="center"
                 android:layout_width="0pt"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
+                android:background="@drawable/main_esquerda"
                 android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/insertData"
+                android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
+                android:background="@drawable/backgound_center"
                 android:layout_height="wrap_content"/>
 
         <Button
                 android:id="@+id/btnDate"
                 android:text="@string/selecionar_data"
                 android:layout_width="0pt"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="5pt"
+                android:background="@drawable/background_button"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+        <TextView
+                android:text="@string/horas"
+                android:background="@drawable/main_esquerda"
+                android:textAlignment="center"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
         <EditText
                 android:id="@+id/insertHour"
                 android:hint="00"
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
                 android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:text="@string/horas"
+                android:text=":"
                 android:textAlignment="center"
                 android:layout_width="0pt"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
                 android:layout_height="wrap_content"/>
+
 
         <EditText
                 android:id="@+id/insertMinute"
                 android:hint="00"
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
                 android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
@@ -66,6 +91,7 @@
 
         <TextView
                 android:text="@string/minutos"
+                android:background="@drawable/input_direita"
                 android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
@@ -78,53 +104,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <ImageButton
-                android:id="@+id/btnPubMais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
         <TextView
-                android:id="@+id/viewPub"
-                android:text="@string/zero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <ImageButton
-                android:id="@+id/btnPubMenos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
+                android:layout_marginTop="10pt"
+                android:textColor="@color/colorWhite"
                 android:text="@string/publicacoes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <ImageButton
-                android:id="@+id/btnVidMais"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:id="@+id/viewVid"
-                android:text="@string/zero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <ImageButton
-                android:id="@+id/btnVidMenos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
+                android:layout_marginTop="10pt"
+                android:textColor="@color/colorWhite"
                 android:text="@string/videos"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -133,26 +128,134 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-        <ImageButton
-                android:id="@+id/btnRevMais"
-                android:layout_width="wrap_content"
+        <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.04"
                 android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+
+
+            <ImageButton
+                    android:id="@+id/btnPubMais"
+                    android:background="@drawable/plus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+            <TextView
+                    android:id="@+id/viewPub"
+                    android:text="@string/zero"
+                    android:background="@drawable/input_text"
+                    android:layout_marginLeft="5pt"
+                    android:layout_marginRight="5pt"
+                    android:layout_width="25pt"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"/>
+
+            <ImageButton
+                    android:id="@+id/btnPubMenos"
+                    android:background="@drawable/minus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+        </LinearLayout>
 
         <TextView
-                android:id="@+id/viewRev"
-                android:text="@string/zero"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.06"
                 android:layout_height="wrap_content"/>
 
-        <ImageButton
-                android:id="@+id/btnRevMenos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+
+            <ImageButton
+                    android:id="@+id/btnVidMais"
+                    android:background="@drawable/plus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+            <TextView
+                    android:id="@+id/viewVid"
+                    android:text="@string/zero"
+                    android:background="@drawable/input_text"
+                    android:layout_marginLeft="5pt"
+                    android:layout_marginRight="5pt"
+                    android:layout_width="25pt"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"/>
+
+            <ImageButton
+                    android:id="@+id/btnVidMenos"
+                    android:background="@drawable/minus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <TextView
+            android:layout_marginTop="10pt"
+            android:textColor="@color/colorWhite"
+            android:text="@string/revisitas"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <TextView
-                android:text="@string/revisitas"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="wrap_content">
+
+            <ImageButton
+                    android:id="@+id/btnRevMais"
+                    android:background="@drawable/plus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+            <TextView
+                    android:id="@+id/viewRev"
+                    android:text="@string/zero"
+                    android:background="@drawable/input_text"
+                    android:layout_marginLeft="5pt"
+                    android:layout_marginRight="5pt"
+                    android:layout_width="25pt"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"/>
+
+            <ImageButton
+                    android:id="@+id/btnRevMenos"
+                    android:background="@drawable/minus"
+                    android:layout_width="21pt"
+                    android:layout_height="21pt"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
