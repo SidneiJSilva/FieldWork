@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_estudos"
-        android:background="@drawable/background_texture"
+        android:background="@drawable/background_textture_2"
         tools:context=".views.EstudosActivity">
 
     <LinearLayout

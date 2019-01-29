@@ -56,5 +56,6 @@
     <string name="title_activity_estudos">EstudosActivity</string>
     <string name="estudos_mes">Estudos dirigidos durante o mês de</string>
     <string name="publicador">Publicador</string>
+    <string name="title_activity_resumo_anual">ResumoAnualActivity</string>
 
 </resources>

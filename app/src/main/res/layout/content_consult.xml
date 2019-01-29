@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_consult"
+        android:background="@drawable/background_textture_2"
         tools:context=".views.ConsultActivity">
 
     <LinearLayout
@@ -62,6 +63,8 @@
 
     <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -69,6 +72,8 @@
                 android:text="@string/publicacoes"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/consult_anual_report_months_left"
+                android:textSize="6pt"
                 android:layout_height="wrap_content"/>
 
         <TextView
@@ -81,6 +86,8 @@
 
     <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -88,6 +95,8 @@
                 android:text="@string/videos"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/consult_anual_report_months_left"
+                android:textSize="6pt"
                 android:layout_height="wrap_content"/>
 
         <TextView
@@ -100,6 +109,8 @@
 
     <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -107,6 +118,8 @@
                 android:text="@string/horas"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/consult_anual_report_months_left"
+                android:textSize="6pt"
                 android:layout_height="wrap_content"/>
 
         <TextView
@@ -119,6 +132,8 @@
 
     <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -126,6 +141,8 @@
                 android:text="@string/revisitas"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/consult_anual_report_months_left"
+                android:textSize="6pt"
                 android:layout_height="wrap_content"/>
 
         <TextView
@@ -138,15 +155,21 @@
 
     <TextView
             android:text="@string/notas"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
+            android:textColor="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <ScrollView
             android:layout_width="match_parent"
+            android:layout_marginRight="5pt"
+            android:layout_marginLeft="5pt"
             android:layout_height="50pt">
 
         <TextView
                 android:id="@+id/consultNotas"
+                android:background="@drawable/background_row_notas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

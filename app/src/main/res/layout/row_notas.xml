@@ -22,17 +22,12 @@
             android:layout_height="1dp"
             android:background="@color/colorOrange1"/>
 
-    <ScrollView
+
+    <TextView
+            android:text="nota"
+            android:id="@+id/recyclerRowNota"
             android:layout_width="match_parent"
-            android:layout_height="50pt">
-
-        <TextView
-                android:text="nota"
-                android:id="@+id/recyclerRowNota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-    </ScrollView>
+            android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

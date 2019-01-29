@@ -74,7 +74,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val nome = spinnerMain.selectedItem.toString()
 
         //populando tela inicial
-        startAll(nome)
+        val mMonth: Int = date.getNumberMonth()
+        startAll(nome, mMonth.toString(), date.getYear())
 
         setListeners()
 
@@ -82,7 +83,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onResume() {
         val nome = spinnerMain.selectedItem.toString()
-        startAll(nome)
+        val mMonth: Int = date.getNumberMonth()
+        startAll(nome, mMonth.toString(), date.getYear())
         super.onResume()
     }
 
@@ -96,7 +98,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         //popula a tela inicial conforme o nome clicado no spinner
         val nome = spinnerMain.selectedItem.toString()
-        startAll(nome)
+        val mMonth: Int = date.getNumberMonth()
+        startAll(nome, mMonth.toString(), date.getYear())
     }
 
     override fun onBackPressed() {
@@ -146,16 +149,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.incluirEstudo -> {
                 startActivity(Intent(this, EstudosActivity::class.java))
             }
+            R.id.resumoAnual -> {
+                startActivity(Intent(this, ResumoAnualActivity::class.java))
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    private fun startAll(nome: String) {
+    private fun startAll(nome: String, mes: String, ano: String) {
 
         try {
-            var reportEntity: ReportEntity = mReportBusiness.mainConsult(nome)
+            var reportEntity: ReportEntity = mReportBusiness.mainConsult(nome, mes, ano)
 
             publicacoes.text = reportEntity.publicacoes.toString()
             videos.text = reportEntity.videos.toString()
@@ -171,6 +177,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             horas.text = hour
             revisitas.text = reportEntity.revisitas.toString()
             estudos.text = reportEntity.estudos.toString()
+
+            if(reportEntity.publicacoes == 0 && reportEntity.videos == 0 && reportEntity.horas == 0 && reportEntity.revisitas == 0 && reportEntity.estudos == 0){
+                Toast.makeText(this, "Mês ainda não trabalhado.", Toast.LENGTH_LONG).show()
+            }
 
         } catch (e: SQLException) {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()

@@ -166,8 +166,6 @@ class ReportRepository private constructor(context: Context) {
         return cursor.count > 0
     }
 
-
-
     fun update(reportEntity: ReportEntity) {
         try {
             val db = mFieldWorkDataBaseHelper.writableDatabase
@@ -243,7 +241,7 @@ class ReportRepository private constructor(context: Context) {
         }
     }
 
-    fun mainConsult(name: String): ReportEntity {
+    fun mainConsult(name: String, mes: String, ano: String): ReportEntity {
 
         try {
             val db = mFieldWorkDataBaseHelper.readableDatabase
@@ -256,7 +254,9 @@ class ReportRepository private constructor(context: Context) {
                         "SUM(${DataBaseConstants.REPORT.COLUMNS.HORAS}) AS ${DataBaseConstants.REPORT.COLUMNS.HORAS}, " +
                         "SUM(${DataBaseConstants.REPORT.COLUMNS.REVISITAS}) AS ${DataBaseConstants.REPORT.COLUMNS.REVISITAS}, " +
                         "SUM(${DataBaseConstants.REPORT.COLUMNS.ESTUDOS}) AS ${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} " +
-                        "from ${DataBaseConstants.REPORT.TABLE_NAME} where ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '${name}'",
+                        "from ${DataBaseConstants.REPORT.TABLE_NAME} where ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '${name}'" +
+                        "AND ${DataBaseConstants.REPORT.COLUMNS.MES} = '$mes' " +
+                        "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = '$ano'",
                 null
             )
 

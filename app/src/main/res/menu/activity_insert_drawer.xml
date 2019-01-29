@@ -25,6 +25,10 @@
                 android:id="@+id/incluirEstudo"
                 android:icon="@drawable/literature"
                 android:title="Estudos"/>
+        <item
+                android:id="@+id/resumoAnual"
+                android:icon="@drawable/calendar"
+                android:title="Resumo anual"/>
     </group>
 
     <item android:title="Ferramentas">

@@ -143,7 +143,9 @@ class ConsultaNotasActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.incluirEstudo -> {
                 startActivity(Intent(this, EstudosActivity::class.java))
             }
-
+            R.id.resumoAnual -> {
+                startActivity(Intent(this, ResumoAnualActivity::class.java))
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)

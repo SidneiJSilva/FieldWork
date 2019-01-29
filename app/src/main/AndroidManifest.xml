@@ -44,6 +44,11 @@
                 android:label="@string/title_activity_estudos"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".views.ResumoAnualActivity"
+                android:label="@string/title_activity_resumo_anual"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
