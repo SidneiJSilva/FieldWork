@@ -265,24 +265,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <TextView
-            android:text="Notas"
+    <!--<TextView-->
+            <!--android:text="Notas"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+
+    <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50pt">-->
+
+        <!--<EditText-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:inputType="textMultiLine"-->
+                <!--android:hint="Digite aqui"-->
+                <!--android:ems="10"-->
+                <!--android:id="@+id/notas"/>-->
+
+    <!--</ScrollView>-->
+
+    <Button
+            android:id="@+id/inserirNota"
+            android:text="Inserir nota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="50pt">
-
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:hint="Digite aqui"
-                android:ems="10"
-                android:id="@+id/notas"/>
-
-    </ScrollView>
 
     <Button
             android:id="@+id/salvar"

@@ -71,6 +71,8 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         insertDate()
 
+        loadNotes()
+
     }
 
     override fun onClick(v: View) {
@@ -83,6 +85,7 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.btnRevMais -> mais("Rev")
             R.id.btnRevMenos -> menos("Rev")
             R.id.btnDate -> datePicker()
+            R.id.inserirNota -> insertNote()
         }
     }
 
@@ -165,10 +168,10 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             horas = (parseInt(insertHour.text.toString()) * 60) + parseInt(insertMinute.text.toString())
         }
 
-        var notes = """|${notas.text.toString()}
+        val notes = """|${intent.getStringExtra("nota")}
         """.trimMargin()
 
-        var reportEntity = ReportEntity(
+        val reportEntity = ReportEntity(
             0,
             dia,
             mes,
@@ -202,7 +205,7 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 if (reportEntity.notas != "") {
                     reportEntity.notas = reportEntity2.notas + """
 
-                        |(continuação...)
+                        |>>>>>
                         |${reportEntity.notas}""".trimMargin()
                 } else {
                     reportEntity.notas = reportEntity2.notas
@@ -305,6 +308,7 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         btnRevMenos.setOnClickListener(this)
         nameSpinner.onItemSelectedListener = this
         btnDate.setOnClickListener(this)
+        inserirNota.setOnClickListener(this)
     }
 
     private fun insertDate() {
@@ -318,6 +322,37 @@ class InsertActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         calendar.set(parseInt(ano), calendar.get(Calendar.MONTH), parseInt(dia))
         val value = mSimpleDateFormat.format(calendar.time)
         insertData.text = value
+    }
+
+    private fun insertNote(){
+
+        val hora = insertHour.text.toString()
+        val minuto = insertMinute.text.toString()
+        val publicacao = viewPub.text.toString()
+        val video = viewVid.text.toString()
+        val revisita = viewRev.text.toString()
+
+        var i = Intent(this, InsertNoteAcitivity::class.java)
+        i.putExtra("hora", hora)
+        i.putExtra("minuto", minuto)
+        i.putExtra("publicacao", publicacao)
+        i.putExtra("video", video)
+        i.putExtra("revisita", revisita)
+        finish()
+        startActivity(i)
+
+    }
+
+    private fun loadNotes(){
+        var ref = 0
+        ref = intent.getIntExtra("ref", 0)
+        if(ref == 1){
+            insertHour.setText(intent.getStringExtra("hora"))
+            insertMinute.setText(intent.getStringExtra("minuto"))
+            viewPub.setText(intent.getStringExtra("publicacao"))
+            viewVid.setText(intent.getStringExtra("video"))
+            viewRev.setText(intent.getStringExtra("revisita"))
+        }
     }
 
 }
