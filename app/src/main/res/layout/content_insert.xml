@@ -47,7 +47,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:orientation="horizontal"
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content">
 
         <TextView
-                android:layout_marginTop="10pt"
+                android:layout_marginTop="5pt"
                 android:textColor="@color/colorWhite"
                 android:text="@string/publicacoes"
                 android:layout_width="0dp"
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:layout_marginTop="10pt"
+                android:layout_marginTop="5pt"
                 android:textColor="@color/colorWhite"
                 android:text="@string/videos"
                 android:layout_width="0dp"
@@ -204,10 +204,8 @@
 
     </LinearLayout>
 
-
-
     <TextView
-            android:layout_marginTop="10pt"
+            android:layout_marginTop="5pt"
             android:textColor="@color/colorWhite"
             android:text="@string/revisitas"
             android:layout_width="match_parent"
@@ -216,6 +214,7 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content">
 
         <TextView
@@ -260,9 +259,22 @@
 
     </LinearLayout>
 
+    <TextView
+            android:text="@string/selecionar_usuario"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_consult_top"
+            android:textAlignment="center"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"/>
+
     <Spinner
             android:id="@+id/nameSpinner"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
+            android:background="@drawable/background_consult_bottom"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"/>
 
     <!--<TextView-->
@@ -287,19 +299,26 @@
     <Button
             android:id="@+id/inserirNota"
             android:text="Inserir nota"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/background_button"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"/>
 
     <Button
             android:id="@+id/salvar"
             android:text="salvar"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/background_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <TextView
-            android:id="@+id/bdTestes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <!--<TextView-->
+            <!--android:id="@+id/bdTestes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
 
 
 </LinearLayout>

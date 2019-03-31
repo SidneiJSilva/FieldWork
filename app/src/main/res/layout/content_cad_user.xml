@@ -9,7 +9,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_cad_user"
         tools:context=".views.CadUserActivity"
-        android:background="@drawable/background_texture">
+        android:background="@drawable/background_textture_2">
 
     <TextView
             android:text="@string/cadastro_de_usuario"

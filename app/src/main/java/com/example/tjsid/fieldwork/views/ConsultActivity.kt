@@ -94,7 +94,7 @@ class ConsultActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         calendar.set(year, month, dayOfMonth)
         val value = mSimpleDateFormat.format(calendar.time)
-        consultData.text = value
+        consultDataBtn.text = value
     }
 
     override fun onBackPressed() {
@@ -188,6 +188,7 @@ class ConsultActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 consultHoras.text = ""
                 consultNotas.text = ""
                 Toast.makeText(this, "Relatório não encontrado!", Toast.LENGTH_LONG).show()
+                consultDelete.isEnabled = false
             } else {
                 consultPub.text = report.publicacoes.toString()
                 consultVid.text = report.videos.toString()
@@ -196,7 +197,12 @@ class ConsultActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 val hora = (report.horas/60).toString() + ":" + (report.horas%60).toString()
 
                 consultHoras.text = hora
-                consultNotas.text = report.notas
+
+                if(report.notas == "null"){
+                    consultNotas.text = ""
+                }else{
+                    consultNotas.text = report.notas
+                }
 
                 consultDelete.isEnabled = true
             }
