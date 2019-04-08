@@ -12,19 +12,1004 @@
         tools:context=".views.ResumoAnualActivity">
 
     <LinearLayout
+            android:layout_marginTop="5pt"
+            android:layout_marginLeft="5pt"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <Spinner
-                android:id="@+id/spinnerResumnoAnual"
+        <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:text="@string/selecionar_usuario"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/background_consult_top"
+                    android:textAlignment="center"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content"/>
+
+            <Spinner
+                    android:backgroundTint="@color/colorWhite"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/spinnerResumnoAnual"
+                    android:background="@drawable/background_consult_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:text="Selecionar Ano"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/background_consult_top"
+                    android:textAlignment="center"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"/>
+
+            <Spinner
+                    android:backgroundTint="@color/colorWhite"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/spinnerResumnoAnualAno"
+                    android:background="@drawable/background_consult_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_left"
+                android:textColor="@color/colorWhite"
+                android:text="  Mês"
+                android:textSize="15dp"
+                android:layout_width="0pt"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:background="@color/colorOrange2"
+                android:textColor="@color/colorWhite"
+                android:text="Pub"
+                android:textSize="15dp"
+                android:textAlignment="center"
                 android:layout_width="0pt"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
 
-        <Spinner
-                android:id="@+id/spinnerResumnoAnualAno"
+        <TextView
+                android:background="@color/colorOrange2"
+                android:textColor="@color/colorWhite"
+                android:text="Vídeos"
+                android:textSize="15dp"
+                android:textAlignment="center"
                 android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:background="@color/colorOrange2"
+                android:textColor="@color/colorWhite"
+                android:text="Horas"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:background="@color/colorOrange2"
+                android:textColor="@color/colorWhite"
+                android:text="Rev"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/consult_anual_report_right"
+                android:text="Est"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Jan"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/janPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/janVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/janHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/janRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/janEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Fev"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/fevPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/fevVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/fevHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/fevRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/fevEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Mar"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/marPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/marVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/marHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/marRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/marEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Abr"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/abrPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/abrVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/abrHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/abrRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/abrEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Mar"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/maiPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/maiVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/maiHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/maiRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/maiEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Jun"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/junPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/junVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/junHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/junRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/junEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Jul"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/julPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/julVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/julHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/julRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/julEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Ago"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/agoPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/agoVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/agoHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/agoRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/agoEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Set"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/setPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/setVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/setHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/setRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/setEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Out"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/outPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/outVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/outHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/outRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/outEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Nov"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/novPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/novVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/novHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/novRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/novEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="3pt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:background="@drawable/consult_anual_report_months_left"
+                android:text="  Dez"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/dezPub"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/dezVid"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/dezHor"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/dezRev"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:textStyle="italic"
+                android:background="@drawable/consult_anual_report_months_right"
+                android:id="@+id/dezEst"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="15dp"
+                android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
 
@@ -41,76 +1026,19 @@
         <TextView
                 android:background="@drawable/consult_anual_report_left"
                 android:textColor="@color/colorWhite"
-                android:text="  Mes"
-                android:textSize="10dp"
-                android:layout_width="0pt"
-                android:layout_weight="1"
+                android:text="  Tot"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:background="@color/colorOrange2"
-                android:textColor="@color/colorWhite"
-                android:text="Publicações"
-                android:textSize="10dp"
+                android:textStyle="italic"
+                android:background="@color/colorWhite"
+                android:id="@+id/totPub"
                 android:textAlignment="center"
-                android:layout_width="0pt"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:background="@color/colorOrange2"
-                android:textColor="@color/colorWhite"
-                android:text="Vídeos"
-                android:textSize="10dp"
-                android:textAlignment="center"
-                android:layout_width="0pt"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:background="@color/colorOrange2"
-                android:textColor="@color/colorWhite"
-                android:text="Horas"
-                android:textSize="10dp"
-                android:textAlignment="center"
-                android:layout_width="0pt"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:background="@color/colorOrange2"
-                android:textColor="@color/colorWhite"
-                android:text="Revisitas"
-                android:textSize="10dp"
-                android:textAlignment="center"
-                android:layout_width="0pt"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/consult_anual_report_right"
-                android:text="Estudos"
-                android:textSize="10dp"
-                android:textAlignment="center"
-                android:layout_width="0pt"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Janeiro"
-                android:textSize="10dp"
+                android:text="0"
+                android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -118,10 +1046,10 @@
         <TextView
                 android:textStyle="italic"
                 android:background="@color/colorWhite"
-                android:id="@+id/janPub"
+                android:id="@+id/totVid"
                 android:textAlignment="center"
                 android:text="0"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -129,10 +1057,10 @@
         <TextView
                 android:textStyle="italic"
                 android:background="@color/colorWhite"
-                android:id="@+id/janVid"
+                android:id="@+id/totHor"
                 android:textAlignment="center"
                 android:text="0"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -140,21 +1068,10 @@
         <TextView
                 android:textStyle="italic"
                 android:background="@color/colorWhite"
-                android:id="@+id/janHor"
+                android:id="@+id/totRev"
                 android:textAlignment="center"
                 android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/janRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -162,813 +1079,10 @@
         <TextView
                 android:textStyle="italic"
                 android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/janEst"
+                android:id="@+id/totEst"
                 android:textAlignment="center"
                 android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Fevereiro"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/fevPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/fevVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/fevHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/fevRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/fevEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Março"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/marPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/marVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/marHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/marRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/marEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Abril"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/abrPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/abrVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/abrHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/abrRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/abrEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Maio"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/maiPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/maiVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/maiHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/maiRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/maiEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Junho"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/junPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/junVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/junHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/junRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/junEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Julho"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/julPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/julVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/julHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/julRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/julEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Agosto"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/agoPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/agoVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/agoHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/agoRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/agoEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Setembro"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/setPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/setVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/setHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/setRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/setEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Outubro"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/outPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/outVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/outHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/outRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/outEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Novembro"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/novPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/novVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/novHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/novRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/novEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginLeft="5pt"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="3pt"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:background="@drawable/consult_anual_report_months_left"
-                android:text="  Dezembro"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/dezPub"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/dezVid"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/dezHor"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@color/colorWhite"
-                android:id="@+id/dezRev"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:textStyle="italic"
-                android:background="@drawable/consult_anual_report_months_right"
-                android:id="@+id/dezEst"
-                android:textAlignment="center"
-                android:text="0"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>

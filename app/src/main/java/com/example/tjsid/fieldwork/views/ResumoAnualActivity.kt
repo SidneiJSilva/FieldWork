@@ -288,6 +288,21 @@ class ResumoAnualActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         dezHor.text = dezHour
         dezRev.text = reportDez.revisitas.toString()
         dezEst.text = reportDez.estudos.toString()
+
+        //total
+        var total: ReportEntity = mReportBusiness.consultTotal(nome, year)
+        totPub.text = total.publicacoes.toString()
+        totVid.text = total.videos.toString()
+        var totHour: String
+        totHour = if (total.horas % 60 == 0) {
+            (total.horas / 60).toString() + ":00"
+        } else {
+            (total.horas / 60).toString() + ":" + (total.horas % 60)
+        }
+        totHor.text = totHour
+        totRev.text = total.revisitas.toString()
+        totEst.text = total.estudos.toString()
+
     }
 
     private fun loadSpinner() {

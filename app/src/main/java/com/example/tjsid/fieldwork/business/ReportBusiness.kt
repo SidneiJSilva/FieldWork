@@ -28,6 +28,8 @@ class ReportBusiness(context: Context) {
 
     fun consult(reportEntity: ReportEntity) = mReportRepository.consult(reportEntity)
 
+    fun consultTotal(nome: String, ano: String) = mReportRepository.consultTotal(nome, ano)
+
     fun mainConsult(name: String, mes: String, ano: String) = mReportRepository.mainConsult(name, mes, ano)
 
     fun delete(reportEntity: ReportEntity) = mReportRepository.delete(reportEntity)

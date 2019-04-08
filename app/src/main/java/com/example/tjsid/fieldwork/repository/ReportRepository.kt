@@ -589,4 +589,59 @@ class ReportRepository private constructor(context: Context) {
         }
 
     }
+
+    fun consultTotal(user: String, year: String): ReportEntity{
+
+        try {
+            val db = mFieldWorkDataBaseHelper.readableDatabase
+            val cursor: Cursor
+            var report = ReportEntity(0, "nulo", "", "", "", 0, 0, 0, 0, 0, "")
+
+            cursor = db.rawQuery(
+                "SELECT SUM(${DataBaseConstants.REPORT.COLUMNS.PUBLICACOES}) AS ${DataBaseConstants.REPORT.COLUMNS.PUBLICACOES}, " +
+                        "SUM(${DataBaseConstants.REPORT.COLUMNS.VIDEOS}) AS ${DataBaseConstants.REPORT.COLUMNS.VIDEOS}, " +
+                        "SUM(${DataBaseConstants.REPORT.COLUMNS.HORAS}) AS ${DataBaseConstants.REPORT.COLUMNS.HORAS}, " +
+                        "SUM(${DataBaseConstants.REPORT.COLUMNS.REVISITAS}) AS ${DataBaseConstants.REPORT.COLUMNS.REVISITAS}, " +
+                        "SUM(${DataBaseConstants.REPORT.COLUMNS.ESTUDOS}) AS ${DataBaseConstants.REPORT.COLUMNS.ESTUDOS} " +
+                        "from ${DataBaseConstants.REPORT.TABLE_NAME} where ${DataBaseConstants.REPORT.COLUMNS.PUBLICADOR} = '$user'" +
+                        "AND ${DataBaseConstants.REPORT.COLUMNS.ANO} = '$year'",
+                null
+            )
+
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+
+                val reportPublicacoes =
+                    cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.PUBLICACOES))
+                val reportVideos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.VIDEOS))
+                val reportHoras = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.HORAS))
+                val reportRevisitas = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.REVISITAS))
+                val reportEstudos = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.REPORT.COLUMNS.ESTUDOS))
+
+                report = ReportEntity(
+                    0,
+                    "",
+                    "",
+                    "",
+                    "",
+                    reportPublicacoes,
+                    reportVideos,
+                    reportHoras,
+                    reportRevisitas,
+                    reportEstudos,
+                    ""
+                )
+
+                return report
+            } else {
+                return report
+            }
+
+        } catch (e: Exception) {
+            throw e
+        }
+
+
+
+    }
 }
